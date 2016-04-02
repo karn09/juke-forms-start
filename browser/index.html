@@ -4,9 +4,11 @@
         <title>Juke</title>
         <link href="/bootstrap/dist/css/bootstrap.css" rel="stylesheet"/>
         <link href="/bootstrap-dark.css" rel="stylesheet"/>
+        <link href="/uib/dist/ui-bootstrap-csp.css" rel="stylesheet">
         <link href="/style.css" rel="stylesheet"/>
         <script src="/angular/angular.js" defer></script>
         <script src="/angular-ui-router/release/angular-ui-router.js" defer></script>
+        <script src="/uib/dist/ui-bootstrap.js" defer></script>
         <script src="/js/module.js" defer></script>
         <script src="/js/album/album.controllers.js" defer></script>
         <script src="/js/album/album.factory.js" defer></script>
@@ -38,16 +40,20 @@
                         </h4>
                     </section>
                     <hr>
-                    <section>
+                    <section ng-controller="PlayListNavCtrl" >
                         <h4 class="text-muted">PLAYLISTS</h4>
+                        <p ng-repeat="item in list" ui-sref="playlist({pid: item._id})"class="playlist-item">
+
+                            <a>{{item.name}}</a>
+                            <button class="btn btn-default btn-xs pull-right" ng-click="remove(item)">
+                              <i class="glyphicon glyphicon-remove" ></i>
+                            </button>
+                        </p>
                         <p>
-                            <a ui-sref="playList" class="btn btn-primary btn-block">
-                                <span class="glyphicon glyphicon-plus"></span>
-                                PLAYLIST</a>
-                        </p>
-                        <p class="playlist-item">
-                            <a>some playlist name</a>
-                        </p>
+                          <a ui-sref="playListForm" class="btn btn-primary btn-block">
+                            <span class="glyphicon glyphicon-plus"></span>
+                            PLAYLIST</a>
+                          </p>
                     </section>
                 </sidebar>
             </div>
