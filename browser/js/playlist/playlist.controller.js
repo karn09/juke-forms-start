@@ -19,14 +19,14 @@ juke.controller('PlayListNavCtrl', function($scope, PlaylistFactory) {
     });
 
   $scope.remove = function(item) {
-      var currentList = $scope.list;
-      PlaylistFactory.removeList(item)
-        .then(function(res) {
-          $scope.list = currentList.filter(function(playlistItem) {
-            return playlistItem._id !== item._id;
-          });
+    var currentList = $scope.list;
+    PlaylistFactory.removeList(item)
+      .then(function(res) {
+        $scope.list = currentList.filter(function(playlistItem) {
+          return playlistItem._id !== item._id;
         });
-    };
+      });
+  };
 
 });
 
@@ -64,10 +64,10 @@ juke.controller('PlayListCtrl', function($scope, PlaylistFactory, SongFactory, P
     $scope.selected = null;
     $scope.songForm.$setPristine(true);
     PlaylistFactory.addSong(currentList, song)
-    .then(function(res) {
-      var audio = SongFactory.convert(res.data);
-      $scope.playlist.songs.push(audio);
-    });
+      .then(function(res) {
+        var audio = SongFactory.convert(res.data);
+        $scope.playlist.songs.push(audio);
+      });
   };
 
   $scope.playlist = playlist;

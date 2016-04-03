@@ -12,7 +12,7 @@
 
   </div>
   <hr>
-  <table  class='table' ng-show="playlist.songs.length">
+  <table class='table' ng-show="playlist.songs.length">
     <thead>
       <tr>
         <th></th>
@@ -30,11 +30,13 @@
           </button>
         </td>
         <td>{{ song.name }}</td>
-        <td><span ng-repeat="artist in song.artists">{{ artist.name }}{{ $last ? '' : ', ' }}</span></td>
+        <td>
+          <span ng-repeat="artist in song.artists">{{ artist.name }}{{ $last ? '' : ', ' }}</span>
+        </td>
         <td>{{ song.genres.join(', ') }}</td>
         <td>
           <button class="btn btn-default btn-xs pull-right" ng-click="remove(song)">
-            <i class="glyphicon glyphicon-remove" ></i>
+            <i class="glyphicon glyphicon-remove"></i>
           </button>
         </td>
       </tr>
