@@ -12,7 +12,7 @@
 
   </div>
   <hr>
-  <table class='table' ng-show="playlist.songs.length">
+  <table  class='table' ng-show="playlist.songs.length">
     <thead>
       <tr>
         <th></th>
@@ -22,7 +22,7 @@
         <th></th>
       </tr>
     </thead>
-    <tbody>
+    <tbody ui-sortable ng-model="playlist.songs">
       <tr ng-repeat="song in playlist.songs" ng-class="{active: song === getCurrentSong() }">
         <td>
           <button class="btn btn-default btn-xs" ng-click="toggle(song)">
@@ -40,6 +40,7 @@
       </tr>
     </tbody>
   </table>
+  {{playlist.songs}}
   <small ng-hide="playlist.songs.length">No songs.</small>
   <hr>
 </div>
